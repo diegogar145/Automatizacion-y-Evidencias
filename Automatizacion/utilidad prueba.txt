@@ -1,0 +1,52 @@
+package utilidades;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import configuracion.Constantes;
+import principal.ClasePrincipal;
+
+
+public class Prueba extends ClasePrincipal {
+	 
+	public Prueba()  {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public static void CasoPrueba() throws InterruptedException {
+		
+		Thread.sleep(Constantes.MINIMO_TIEMPO_ESPERA);
+		// clic en empleos
+		 driver.findElement(By.xpath("//*[@id='menu-item-550']")).click();
+		 Thread.sleep(Constantes.MINIMO_TIEMPO_ESPERA);
+		 
+		
+			// clic en Convocatorias
+			 driver.findElement(By.xpath("//*[@id='content']/div/div/div/div/div/section[2]/div/div/div[2]/div/div/div/div/div/figure/a/img")).click();
+			 Thread.sleep(Constantes.MINIMO_TIEMPO_ESPERA);
+			
+			 // BUSCAMOS  EMPLEOS DISPONIBLES
+			 
+			 driver.findElement(By.id("search_keywords")).clear();
+			 driver.findElement(By.id("search_keywords")).sendKeys("automatización");
+			 Thread.sleep(Constantes.MINIMO_TIEMPO_ESPERA);
+			// BUSCAMOS  EMPLEOS DISPONIBLES
+			 driver.findElement(By.id("search_location")).clear();
+			 driver.findElement(By.id("search_location")).sendKeys("bogota");
+			 
+			 Thread.sleep(Constantes.MINIMO_TIEMPO_ESPERA);
+				// CLIC EN BUSCAR 
+			 driver.findElement(By.xpath("//*[@id='content']/div/div/div/div/div/section[12]/div/div/div/div/div/div[2]/div/div/div/form/div[1]/div[4]/input")).click();
+			 Thread.sleep(Constantes.MINIMO_TIEMPO_ESPERA);
+			 System.out.println("ENCONTRAMOS EL EMPLEO");
+			
+			
+			 
+			
+		 
+	}

@@ -1,0 +1,77 @@
+
+	package test;
+
+	import java.util.Date;
+
+	import org.apache.commons.csv.CSVParser;
+	import org.apache.commons.csv.CSVRecord;
+	import org.testng.annotations.AfterTest;
+	import org.testng.annotations.BeforeTest;
+	import org.testng.annotations.Test;
+
+	import configuracion.Constantes;
+	import log.Log;
+	import principal.ClasePrincipal;
+
+	public class chacairtesting extends ClasePrincipal  {
+
+		@BeforeTest
+		public void beforeMethod() throws Exception {
+
+			configuracion.DatosTest.inicializarVariles();
+		}
+
+		@Test
+		public void TestMantiz() throws Exception {
+			
+				//Para leer vario Clientes del archivo 	
+			
+			CSVParser csvParser = getCSVParserCAMPAÑA();
+
+			int contadorEjecuciones = 0;
+			Constantes.proceso="MASIVO 1";
+			for (CSVRecord csvRecord : csvParser) {
+				try {
+					if (!csvRecord.get(0).equalsIgnoreCase("CEDULA") && csvRecord.size() > 5) {
+						principal.ClasePrincipal.Chrome3();
+						Constantes.Estado="OK";
+						Constantes.NumeroSolicitudGenerado="Solicitud Coincidente";
+						Constantes.exception="";
+						LeerarchivoCVSCAMPAÑA(contadorEjecuciones);
+						LeerarchivoCVS(contadorEjecuciones);
+						LeerarchivoPRODUCTO(contadorEjecuciones);
+						Constantes.fechaInicioProceso = Log.formatearFecha("dd MM yyyy hh:mm:ss a", new Date()); 
+						System.out.println("Contador de ejecuciones ===>" + contadorEjecuciones);
+					
+						startRecording();
+					
+						utilidades.Prueba.CasoPrueba();
+						//utilidades.Empleos.SelecOficio1();
+						utilidades.contactenos.chocair();
+						//utilidades.contactenos.llenarInfomacionGarantiasComecialUno();
+						
+						
+					// Para que finalice la grabación
+						stopRecording();
+					}
+				} catch (Exception ex) {
+					Constantes.Estado="ERROR";
+					Constantes.exception=Log.convertStackTraceToString(ex);
+				} finally {
+					if (driver != null) {
+						// cierra la ventana al finalizar la ejecucion 
+						//driver.quit();
+						Log.CrearLog();
+					}
+
+					beforeMethod();
+					contadorEjecuciones++;
+				}
+			}
+		}
+
+		@AfterTest
+		public void afterTest() {
+		}
+
+	}

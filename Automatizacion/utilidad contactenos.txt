@@ -1,0 +1,90 @@
+package utilidades;
+
+import javax.swing.JOptionPane;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import configuracion.Constantes;
+import principal.ClasePrincipal;
+
+public class contactenos extends ClasePrincipal {
+
+	
+	
+	public static void chocair() throws InterruptedException {
+	
+		
+		Thread.sleep(Constantes.MINIMO_TIEMPO_ESPERA);
+		// clic en empleos
+		 driver.findElement(By.xpath("//*[@id='menu-item-282']")).click();
+		 Thread.sleep(Constantes.MINIMO_TIEMPO_ESPERA);
+		 
+		
+		 //  Nombre Completo
+		 driver.findElement(By.xpath("//*[@id='wpcf7-f1566-p273-o1']/form/center/p[2]/label[1]/span/input")).clear();
+		 driver.findElement(By.xpath("//*[@id='wpcf7-f1566-p273-o1']/form/center/p[2]/label[1]/span/input")).sendKeys("Diego");
+		 Thread.sleep(Constantes.MINIMO_TIEMPO_ESPERA);
+		// Correo Electrónico
+		//*[@id="wpcf7-f1566-p273-o1"]/form/center/p[2]/label[2]/span/input
+		 
+		 driver.findElement(By.xpath("//*[@id='wpcf7-f1566-p273-o1']/form/center/p[2]/label[2]/span/input")).clear();
+		 driver.findElement(By.xpath("//*[@id='wpcf7-f1566-p273-o1']/form/center/p[2]/label[2]/span/input")).sendKeys("garcia");
+		 Thread.sleep(Constantes.MINIMO_TIEMPO_ESPERA);
+		 
+		 // Celular o Teléfono de Contacto
+		 driver.findElement(By.xpath("//*[@id='wpcf7-f1566-p273-o1']/form/center/p[2]/label[3]/span/input")).clear();
+		 driver.findElement(By.xpath("//*[@id='wpcf7-f1566-p273-o1']/form/center/p[2]/label[3]/span/input")).sendKeys("aspirante ");
+		 Thread.sleep(Constantes.MINIMO_TIEMPO_ESPERA);
+		// ¿Qué estudios formales tienes o en qué semestre te encuentras actualmente?
+
+		 driver.findElement(By.xpath("//*[@id='wpcf7-f1566-p273-o1']/form/center/p[2]/label[4]/span/input")).clear();
+		 driver.findElement(By.xpath("//*[@id='wpcf7-f1566-p273-o1']/form/center/p[2]/label[4]/span/input")).sendKeys("bogota");
+		 
+		 // ¿Qué tiempo de experiencia certificada tienes en Pruebas o en Desarrollo de software?(Si aplica)
+
+		 driver.findElement(By.xpath("//*[@id='wpcf7-f1566-p273-o1']/form/center/p[2]/label[5]/span/input")).clear();
+		 driver.findElement(By.xpath("//*[@id='wpcf7-f1566-p273-o1']/form/center/p[2]/label[5]/span/input")).sendKeys("3145840185");
+		 Thread.sleep(Constantes.MINIMO_TIEMPO_ESPERA);
+		// ¿Conoces de automatización de pruebas? ¿Te gustaría aprender?(Si aplica)
+
+		 driver.findElement(By.xpath("//*[@id='wpcf7-f1566-p273-o1']/form/center/p[2]/label[6]/span/input")).clear();
+		 driver.findElement(By.xpath("//*[@id='wpcf7-f1566-p273-o1']/form/center/p[2]/label[6]/span/input")).sendKeys("diegogarcia145@gmail.com");
+		 
+		 // ¿Cuál es tu aspiración salarial?
+		 driver.findElement(By.xpath("//*[@id='wpcf7-f1566-p273-o1']/form/center/p[2]/label[7]/span/textarea")).clear();
+		 driver.findElement(By.xpath("//*[@id='wpcf7-f1566-p273-o1']/form/center/p[2]/label[7]/span/textarea")).sendKeys("no encontre una bacante de automatizacion en bogota con ustedes este mensaje fue por medio de flujo automatizado con selenium y testng");
+		 Thread.sleep(Constantes.MINIMO_TIEMPO_ESPERA);
+		 
+		 
+
+		 
+		 WebDriverWait wait3 = new WebDriverWait(driver, 30);
+		 wait3.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//*[@id='anr_captcha_field_1']/div/div/iframe")));
+		WebElement element5 = wait3.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.recaptcha-checkbox-border")));
+		 element5.click();
+		 
+		 
+		 //driver.switchTo().frame("//*[@id='anr_captcha_field_1']/div/div/iframe");
+		 //driver.findElement(By.cssSelector("div.recaptcha-checkbox-border")).click();
+		 
+		 Thread.sleep(Constantes.MINIMO_TIEMPO_ESPERA);
+		 JOptionPane.showMessageDialog(null,  "Por favor selecionar las imagenes para continuar con el procesos al finalizar las imagenes dar en ok o continuar",  null, JOptionPane.QUESTION_MESSAGE); 
+			Thread.sleep(Constantes.MINIMO_TIEMPO_ESPERA);
+		 
+				driver.switchTo().defaultContent();
+		
+			
+			//clic en enviar
+		 Actions actions = new Actions(driver);
+		 WebElement elementLocator = driver.findElement(By.xpath("//*[@id='wpcf7-f1566-p273-o1']/form/center/p[5]/input"));
+		 actions.doubleClick(elementLocator).perform();
+			 
+		
+	}
+
+	
+}
